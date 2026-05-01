@@ -15,7 +15,6 @@ const Signup = () => {
         setError('');
 
         try {
-            // Make the API call to our backend's register route
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
                 name,
                 email,
@@ -24,11 +23,9 @@ const Signup = () => {
 
             const data = response.data;
 
-            // Save the token and user info, just like in Login
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data));
 
-            // Redirect immediately to the dashboard
             navigate('/dashboard');
             
         } catch (err) {
